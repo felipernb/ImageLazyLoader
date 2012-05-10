@@ -6,27 +6,24 @@ class LazyLoader
 		@cssClass = cssClass
 		@updateImages()
 
-	isElementVisible = (element) ->
-		return element.getBoundingClientRect().top < window.innerHeight
+	isElementVisible: (element) ->
+		element.getBoundingClientRect().top < window.innerHeight
 
 
-	listLowResImages = (forceFetch) ->
+	listLowResImages: (forceFetch) ->
 		if (forceFetch || @lowResImages.length == 0)
 			@lowResImages = document.getElementsByClassName(@cssClass)
-		return this.lowResImages
+		this.lowResImages
 
-	updateImages = ->
-		this.listLowResImages(true)
-		@loadRighRes img for img in @lowResImages when @isElementVisible img
+	updateImages: ->
+		@loadHighRes img for img in @listLowResImages(true) when @isElementVisible img
 
-	loadRighRes = (img) ->
-		img.className = img.className.replace(@cssClass, '') #keeps other classes applied to element
+	loadHighRes: (img) ->
 		img.src = img.getAttribute('data-img-src')
-		console.info('loading ' + img.src)
 
 lazy_loader = new LazyLoader('low_res')
 
-window.load = ->
+window.onload = ->
 	lazy_loader.updateImages()
 	actualPosition = window.pageYOffset
 	window.onscroll = ->

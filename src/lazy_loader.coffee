@@ -24,7 +24,7 @@ class LazyLoader
 		img.src = img.getAttribute('data-img-src')
 		console.info('loading ' + img.src)
 
-lazy_loader = new LazyLoader('lowResImages')
+lazy_loader = new LazyLoader('low_res')
 
 window.load = ->
 	lazy_loader.updateImages()

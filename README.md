@@ -2,7 +2,7 @@
 
 Felipe Ribeiro <felipernb@gmail.com>
 
-This script allows you to load your page with low resolution images and substitute them by the hi-resolution ones just when needed (i.e. as soon as the image becomes visible), saving bandwidth
+This script allows you to load your page with low resolution images and substitute them by the hi-resolution ones just when needed (i.e. as soon as the image becomes visible in the initial load and when scrolling), saving bandwidth
 
 It uses vanilla JavaScript and doesn't require any dependency.
 
